@@ -1,5 +1,5 @@
 # python-exercises-metropolia
-# :godmode: German Novopoltsev :godmode:
+:godmode: German Novopoltsev :godmode:
 # Exercises status:
 - [x] 1. First program and deployment of version control
 - [ ] 2. Variables and interactive programs
