@@ -2,7 +2,7 @@
 :godmode: German Novopoltsev :godmode:
 # Exercises status:
 - [x] 1. First program and deployment of version control
-- [ ] 2. Variables and interactive programs
+- [x] 2. Variables and interactive programs
 - [ ] 3. Conditional structures (if)
 - [ ] 4. While loops (while)
 - [ ] 5. List structures and iterative loops (for)

@@ -41,6 +41,19 @@ def to_grams(lots):
     return lots * 13.3
 
 grams: float = to_grams(to_lot(to_talent(pounds) + talents) + lots )
-kilos = grams / 1000
 print("Weight in modern units:")
-print("    %.2f kilograms and" % kilos, "%.2f grams" % grams, "\n\n")
+
+if grams >= 1000:
+    kilos = str(grams/1000).split(".")
+    print(f"    {kilos[0]} kilograms and {kilos[1]} grams\n\n")
+else:
+    print("    %.2f grams" % grams, "\n\n")
+
+import random
+print("Random Combinations for your lock: ")
+rand_3_digit = []
+for i in range(3): rand_3_digit.append(random.randrange(0,9))
+print("3 digit: ", rand_3_digit)
+rand_4_digit = []
+for i in range(4): rand_4_digit.append(random.randrange(1,6))
+print("4 digit: ", rand_4_digit)
