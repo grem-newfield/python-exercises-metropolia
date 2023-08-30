@@ -1,5 +1,8 @@
 # python-exercises-metropolia
 :godmode: German Novopoltsev :godmode:
+
+## Exercises stored in the "exercises" folder of this repo
+
 # Exercises status:
 - [x] 1. First program and deployment of version control
 - [x] 2. Variables and interactive programs
