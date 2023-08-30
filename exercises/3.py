@@ -2,14 +2,17 @@ def part1():
     fish_length_limit = 42.0
     fish_length = float(input("What is the fish length in cm? Type: "))
     if fish_length < fish_length_limit:
-        print(f"Yo, release that one, it's too small. {fish_length_limit - fish_length} cm smaller than the allowed size.")
+        print(
+            f"Yo, release that one, it's too small. {fish_length_limit - fish_length} cm smaller than the allowed size."
+        )
     else:
         print("Nice haul")
+
 
 def part2():
     cabin_class = str(input("\n\nEnter your cabin class: "))
 
-    # under the hood "match" is an "if/elif/else" 
+    # under the hood "match" is an "if/elif/else"
     match cabin_class:
         case "LUX":
             print("Cabin Class LUX!\nupper-deck cabin with a balcony.")
@@ -23,10 +26,6 @@ def part2():
             print("Invalid cabin class!")
 
 
-# . Write a program that asks for the biological gender and hemoglobin value (g/l).
-# The program the notifies the user if the hemoglobin value is low, normal or high.
-#    - A normal hemoglobin value for adult females is between 117-155 g/l.
-#    - A normal hemoglobin value for adult males is between 134-167 g/l.#
 def part3():
     gender = str(input("What is your biological gender? (m/f): "))
     hemoglobin_value = float(input("What is your hemoglobin level? (in g/l): "))
@@ -35,7 +34,7 @@ def part3():
         print(f"Your hemoglobin value is {answer}.")
 
     match gender:
-        case "f"|"female":
+        case "f" | "female":
             if hemoglobin_value > 155.0:
                 answer("too high")
             elif hemoglobin_value < 117.0:
@@ -44,7 +43,7 @@ def part3():
                 answer("normal")
             else:
                 print(f"somethings wrong: {hemoglobin_value}")
-        case "m"|"male":
+        case "m" | "male":
             if hemoglobin_value > 167.0:
                 answer("too high")
             elif hemoglobin_value < 134.0:
@@ -54,11 +53,11 @@ def part3():
             else:
                 print(f"somethings wrong: {hemoglobin_value}")
         case _:
-            print(f"Something wrong? Dump:\nhemoglobin: {hemoglobin_value}\ngender: {gender}")
+            print(
+                f"Something wrong? Dump:\nhemoglobin: {hemoglobin_value}\ngender: {gender}"
+            )
 
-# 4. Write a program that asks the user to enter a year and notifies the user whether the input year is a leap year.
-# A year is a leap year if it is divisible by four. However, years divisible by 100 are leap years only if they are 
-# also divisible by 400.
+
 def part4():
     year = int(input("\n\nEnter a year: "))
 
@@ -66,6 +65,7 @@ def part4():
         print("It's a leap year")
     else:
         print("It's not a leap year")
+
 
 if __name__ == "__main__":
     choice = str(input("Hello, what part of the 3rd exercise?\n(1,2,4,5,all): "))
