@@ -3,7 +3,7 @@
 # Exercises status:
 - [x] 1. First program and deployment of version control
 - [x] 2. Variables and interactive programs
-- [ ] 3. Conditional structures (if)
+- [x] 3. Conditional structures (if)
 - [ ] 4. While loops (while)
 - [ ] 5. List structures and iterative loops (for)
 - [ ] 6. Functions
