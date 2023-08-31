@@ -26,7 +26,7 @@ def part3():
 
 def part4():
     try:
-        nums = [float(n) for n in input("Input 3 numbers split by spaces: ").split(" ")]
+        nums = [float(n) for n in input("Input 3 numbers split by spaces: ").strip().split(" ")]
     except Exception:
         raise Exception("3 numbers split by spaces, please")
     print("Sum: ", fsum(nums))
