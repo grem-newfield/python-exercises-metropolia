@@ -31,7 +31,7 @@ def part4():
         raise Exception("3 numbers split by spaces, please")
     print("Sum: ", fsum(nums))
     print("Product: ", prod(nums))
-    print("Average: ", fsum(nums) / 3.0, "\n\n")
+    print("Average: ", fsum(nums) / len(nums), "\n\n")
 
 
 def part5():
@@ -70,11 +70,11 @@ def part6():
 
     print("Random Combinations for your lock: ")
     rand_3_digit = []
-    for i in range(3):
+    for _ in range(3):
         rand_3_digit.append(random.randrange(0, 9))
     print("3 digit: ", rand_3_digit)
     rand_4_digit = []
-    for i in range(4):
+    for _ in range(4):
         rand_4_digit.append(random.randrange(1, 6))
     print("4 digit: ", rand_4_digit)
 
