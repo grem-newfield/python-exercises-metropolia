@@ -101,3 +101,5 @@ if __name__ == "__main__":
             part4()
             part5()
             part6()
+        case _:
+            print("Wrong input?\nExiting...")

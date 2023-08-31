@@ -28,7 +28,8 @@ def part2():
 
 def part3():
     gender = str(input("What is your biological gender? (m/f): "))
-    hemoglobin_value = float(input("What is your hemoglobin level? (in g/l): "))
+    try: hemoglobin_value = float(input("What is your hemoglobin level? (in g/l): "))
+    except: print("Wrong value for hemoglobin"); return
 
     def answer(answer):
         print(f"Your hemoglobin value is {answer}.")
@@ -59,8 +60,8 @@ def part3():
 
 
 def part4():
-    year = int(input("\n\nEnter a year: "))
-
+    try: year = int(input("\n\nEnter a year: "))
+    except: print("Not a nubmber.");  return
     if year % 4 == 0 or year % 400 == 0:
         print("It's a leap year")
     else:
@@ -68,7 +69,7 @@ def part4():
 
 
 if __name__ == "__main__":
-    choice = str(input("Hello, what part of the 3rd exercise?\n(1,2,4,5,all): "))
+    choice = str(input("Hello, what part of the 3rd exercise?\n(1,2,3,4,all): "))
     match choice:
         case "1":
             part1()
@@ -83,3 +84,5 @@ if __name__ == "__main__":
             part2()
             part3()
             part4()
+        case _:
+            print("Wrong input?\nExiting...")
