@@ -1,7 +1,3 @@
-# 1. Write a program that asks the user how many dice to roll. The program
-#  rolls all the dice once and prints out the
-#  sum of the numbers. Use a  for  loop.
-
 
 def part1():
     from random import randrange
@@ -18,22 +14,17 @@ def part1():
         dice.append(roll)
         print(f"Rolled dice {i+1}: {roll}")
 
-
-#  2. Write a program that asks the user to enter numbers until they input an
-#  empty string to quit. At the end, the
-#  program prints out the five greatest numbers sorted in descending order.
-#  Hint: You can reverse the order of sorted
-#  list items by using the  sort  method with the  reverse=True  argument.
-
+    print(f"\nDice sum: {sum(dice)}\n\n")
 
 def part2():
     numbers = []
     while True:
         number = input("Give me numbers, if you want to stop, anything else? : ")
         try:
-            numbers.append(int(number))
+            numbers.append(float(number))
         except:
             break
+        print(numbers)
     numbers.sort()
     if len(numbers) <= 0:
         print("\n\n")
@@ -57,10 +48,22 @@ def part2():
 
 
 def part3():
+    number = 0
     try:
-        number = input("Throw me some number: ")
+        number = int(input("Throw me some number (int): ").strip())
     except:
-        pass
+        print("Input an integer."); return
+
+    def is_prime(n: int) -> bool:
+    # number that are only divisible by one or the number itself.
+        if n % n == 0 and n % 2 != 0:
+            return True
+        else:
+            return False
+
+
+    
+
 
 
 #  4. Write a program that asks the user to enter the names of five cities one

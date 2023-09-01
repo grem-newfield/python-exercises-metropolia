@@ -57,11 +57,16 @@ def part4():
             elif guess < secret_number:
                 print("Too low")
             else:
-                print("Correct")
-                break
+                print("Correct\n")
+                match input("Do you want to play again? (y/n): "):
+                    case "y" | "yes": continue
+                    case "n" | "no": break
+                    case _:
+                        print("Didn't understand input.\nAssuming you dont.")
         except:
             print("NaN.")
             continue
+
 
 
 def part5():
