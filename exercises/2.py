@@ -40,8 +40,11 @@ def part4():
 def part5():
     try:
         talents, pounds, lots = [
-            float(n) for n in input("""Input talents, pounds and lots,
-    in that order, split by spaces: """).split(" ")
+            float(n)
+            for n in input(
+                """Input talents, pounds and lots,
+    in that order, split by spaces: """
+            ).split(" ")
         ]
     except Exception:
         raise Exception("Did u do something wrong?")
