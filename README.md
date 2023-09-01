@@ -7,7 +7,7 @@
 - [x] 1. First program and deployment of version control
 - [x] 2. Variables and interactive programs
 - [x] 3. Conditional structures (if)
-- [ ] 4. While loops (while)
+- [x] 4. While loops (while)
 - [ ] 5. List structures and iterative loops (for)
 - [ ] 6. Functions
 - [ ] 7. Tuple, set, and dictionary

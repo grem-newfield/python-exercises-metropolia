@@ -3,7 +3,8 @@ def part1():
     fish_length = float(input("What is the fish length in cm? Type: "))
     if fish_length < fish_length_limit:
         print(
-            f"Yo, release that one, it's too small. {fish_length_limit - fish_length} cm smaller than the allowed size."
+            "Yo, release that one, it's too small."
+            f" {fish_length_limit - fish_length} cm smaller than the allowed size."
         )
     else:
         print("Nice haul")
@@ -28,8 +29,11 @@ def part2():
 
 def part3():
     gender = str(input("What is your biological gender? (m/f): "))
-    try: hemoglobin_value = float(input("What is your hemoglobin level? (in g/l): "))
-    except: print("Wrong value for hemoglobin"); return
+    try:
+        hemoglobin_value = float(input("What is your hemoglobin level? (in g/l): "))
+    except:
+        print("Wrong value for hemoglobin")
+        return
 
     def answer(answer):
         print(f"Your hemoglobin value is {answer}.")
@@ -55,13 +59,17 @@ def part3():
                 print(f"somethings wrong: {hemoglobin_value}")
         case _:
             print(
-                f"Something wrong? Dump:\nhemoglobin: {hemoglobin_value}\ngender: {gender}"
+                f"Something wrong? Dump:\nhemoglobin: {hemoglobin_value}\ngender:"
+                f" {gender}"
             )
 
 
 def part4():
-    try: year = int(input("\n\nEnter a year: "))
-    except: print("Not a nubmber.");  return
+    try:
+        year = int(input("\n\nEnter a year: "))
+    except:
+        print("Not a nubmber.")
+        return
     if year % 4 == 0 or year % 400 == 0:
         print("It's a leap year")
     else:

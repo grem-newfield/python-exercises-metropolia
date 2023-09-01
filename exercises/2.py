@@ -26,7 +26,10 @@ def part3():
 
 def part4():
     try:
-        nums = [float(n) for n in input("Input 3 numbers split by spaces: ").strip().split(" ")]
+        nums = [
+            float(n)
+            for n in input("Input 3 numbers split by spaces: ").strip().split(" ")
+        ]
     except Exception:
         raise Exception("3 numbers split by spaces, please")
     print("Sum: ", fsum(nums))
@@ -37,11 +40,8 @@ def part4():
 def part5():
     try:
         talents, pounds, lots = [
-            float(n)
-            for n in input(
-                """Input talents, pounds and lots,
-    in that order, split by spaces: """
-            ).split(" ")
+            float(n) for n in input("""Input talents, pounds and lots,
+    in that order, split by spaces: """).split(" ")
         ]
     except Exception:
         raise Exception("Did u do something wrong?")
