@@ -1,4 +1,3 @@
-
 def part1():
     from random import randrange
 
@@ -15,6 +14,7 @@ def part1():
         print(f"Rolled dice {i+1}: {roll}")
 
     print(f"\nDice sum: {sum(dice)}\n\n")
+
 
 def part2():
     numbers = []
@@ -38,13 +38,6 @@ def part2():
     print("\n\n")
 
 
-#  3. Write a program that asks the user for an integer and tells if the number
-#  is a prime number. Prime numbers are
-#  number that are only divisible by one or the number itself.
-#    • For example, 13 is a prime number as it can only be divided by 1 or 13
-#    so that the result is an integer.
-#    • On the other hand, 21 is not a prime number as it is divisible by 3 and
-#    7.
 
 
 def part3():
@@ -52,35 +45,52 @@ def part3():
     try:
         number = int(input("Throw me some number (int): ").strip())
     except:
-        print("Input an integer."); return
+        print("Input an integer.")
+        return
 
     def is_prime(n: int) -> bool:
-    # number that are only divisible by one or the number itself.
-        if n % n == 0 and n % 2 != 0:
-            return True
-        else:
-            return False
+        if n <= 1: return False
+        if n <= 3: return True
+        if n % 2 == 0 or n % 3 == 0: return False
+        for i in range(5, int(n**0.5) + 1, 6):
+            if n % i == 0 or n % (i + 2) == 0:
+                return False
+        return True
 
+    assert is_prime(13) == True
+    assert is_prime(3) == True
+    assert is_prime(2) == True
+    assert is_prime(73) == True
+    assert is_prime(179) == True
+    assert is_prime(283) == True
+    assert is_prime(569) == True
+    assert is_prime(5) == True
+    assert is_prime(21) == False
+    assert is_prime(0) == False
+    assert is_prime(1) == False
+    assert is_prime(4) == False
+    assert is_prime(564) == False
 
-    
+    if is_prime(number):
+        print("Number is prime")
+    else:
+        print("Number is not a prime")
 
-
-
-#  4. Write a program that asks the user to enter the names of five cities one
-#  by on (use a  for  loop for reading the names)
-#  and stores them into a list structure. Finally, the program prints out the
-#  names of the cities one by one, one city per line,
-#  in the same order they were read as input. Use a  for  loop for asking the
-#  names and a  for/in  loop to iterate through the
-#  list.
 
 
 def part4():
-    print("TODO")
+    cities = []
+    print("Give me 5 cities.")
+    for _ in range(5):
+        cities.append(input("Enter a city name: "))
+    print("\nHere they are:")
+    for i in range(5):
+        print(f"{cities[i]}")
+
 
 
 if __name__ == "__main__":
-    choice = str(input("Hello, what part of the 5rd exercise?\n(1,2,3,4,all): "))
+    choice = str(input("Hello, what part of the 5th exercise?\n(1,2,3,4,all): "))
     match choice:
         case "1":
             part1()

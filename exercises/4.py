@@ -1,6 +1,3 @@
-from random import randint
-
-
 def part1():
     number = 1000
     while number > 0:
@@ -15,15 +12,14 @@ def part2():
 
     print("Inches to cm converter.\n")
     while True:
-        number = input("Type in inches: ").strip()
         try:
-            if float(number) < 0:
+            number = float(input("Type in inches: ").strip())
+            if number < 0:
                 print("Negative number.")
                 break
-            print(f"Converted to cm: {inches_to_cm(float(number))}")
+            print(f"Converted to cm: {inches_to_cm(number)}")
         except:
             print("NaN.")
-            break
 
 
 def part3():
@@ -59,14 +55,16 @@ def part4():
             else:
                 print("Correct\n")
                 match input("Do you want to play again? (y/n): "):
-                    case "y" | "yes": continue
-                    case "n" | "no": break
+                    case "y" | "yes":
+                        secret_number = randrange(1, 10)
+                        continue
+                    case "n" | "no":
+                        break
                     case _:
                         print("Didn't understand input.\nAssuming you dont.")
         except:
             print("NaN.")
             continue
-
 
 
 def part5():
@@ -89,10 +87,16 @@ def part5():
 
 
 def part6():
-    from math import pi
     from random import uniform
 
-    radius = 1
+    # radius = 1
+    # circle_A_origin = (0, 0)
+    # circle_A = pi * radius**2
+    # square_B = 1 * 1
+
+    # π≈4n/N.
+    # N = total number
+    # n = numbers in circle A
 
     try:
         total_points = int(input("How many points? (integer) ").strip())
@@ -103,7 +107,7 @@ def part6():
     def generate_points(amount):
         points = []
         for _ in range(amount):
-            point = [uniform(-1, 1), uniform(-1, 1)]
+            point = (uniform(-1, 1), uniform(-1, 1))
             points.append(point)
         return points
 
@@ -111,22 +115,14 @@ def part6():
         return point[0] ** 2 + point[1] ** 2 < 1
 
     points = generate_points(total_points)
-    points_inside = 0
+    points_inside_circle = 0
 
     for point in points:
         if is_point_in_circle(point):
-            points_inside += 1
+            points_inside_circle += 1
 
-    # π≈4n/N.
-    # N = total number
-    # n = numbers in circle A
-
-    approximate_pi = 4 * (points_inside / total_points)
+    approximate_pi = 4 * (points_inside_circle / total_points)
     print(f"Approximate PI based on {total_points} random points: {approximate_pi}")
-
-    circle_A = pi * radius**2
-    circle_A_origin = (0, 0)
-    square_B = 1 * 1
 
 
 if __name__ == "__main__":
