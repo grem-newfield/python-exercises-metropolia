@@ -105,10 +105,10 @@ def part6():
         return
 
     def generate_points(amount):
-        points = []
+        points = set()
         for _ in range(amount):
             point = (uniform(-1, 1), uniform(-1, 1))
-            points.append(point)
+            points.add(point)
         return points
 
     def is_point_in_circle(point):

@@ -1,4 +1,5 @@
 # ## 7. Tuple, set, and dictionary
+from math import prod
 from sys import argv
 
 
@@ -7,13 +8,6 @@ def break_line():
         "--------------------------------------------------------------------------------"
     )
     print()
-
-
-# 1. Write a program that asks the user for a number of a month and then prints
-# out the corresponding season (`spring`, `summer`, `autumn`, `winter`). Save
-# the seasons as strings into a tuple in your program. We can define each
-# season to last three months, December being the first month of winter.
-
 
 def part1():
     print("Running Part 1\n")
@@ -37,15 +31,26 @@ def part1():
     break_line()
 
 
-# 2. Write a program that asks the user to enter names until he/she enters an
-# empty string. After each name is read the program either prints out `New
-# name` or `Existing name` depending on whether the name was entered for the
-# first time. Finally, the program lists out the input names one by one, one
-# below another in any order. Use the set data structure to store the names.
-
-
 def part2():
     print("Running Part 2\n")
+
+    names = set()
+
+    while True:
+        try:
+            name = input("Give me names! : ")
+            if name == " ": break
+            if name in names:
+                print("Existing name.")
+                continue
+            names.add(name)
+            print("New name.")
+        except KeyboardInterrupt: exit()
+        except:
+            print("? ? ?")
+            continue
+
+    for name in names:print(name)
 
     break_line()
 
@@ -58,16 +63,68 @@ def part2():
 # ICAO code of the airport and prints out the corresponding name. If the user
 # chooses to quit, the program execution ends. The user can choose a new option
 # as many times they want until they choose to quit. (The ICAO code is an
-# identifier that is
-# unique to each airport.
-# For example, the ICAO
-# code of Helsinki-Vantaa
-# Airport is EFHK. You
-# can easily find the
-# ICAO codes of different
-# airports online.)
+                                                      # identifier that is
+                                                      # unique to each airport.
+                                                      # For example, the ICAO
+                                                      # code of Helsinki-Vantaa
+                                                      # Airport is EFHK. You
+                                                      # can easily find the
+                                                      # ICAO codes of different
+                                                      # airports online.)
+
 def part3():
     print("Running Part 3\n")
+
+    # new airport 
+    # fetch info of airport
+    # quit
+
+    airports = dict()
+
+    while True:
+        try:
+            user_input = input("(A)dd new airport, (F)etch info, (Q)uit: ")
+            match user_input:
+                case "a"|"A":
+                    while True:
+                        try: 
+                            print("\nAdding new airport")
+                            airport_icao = input("ICAO code: ").upper()
+                            if len(airport_icao) > 4 or len(airport_icao) < 3:
+                                print("Error. Invalid ICAO format")
+                                continue
+                            airport_name = input("Airport name: ")
+                            airports[airport_icao] = airport_name
+                            print(f"\nAdded {airport_name}:{airport_icao}\n")
+                            break
+                        except KeyboardInterrupt: exit()
+                        except:
+                            print("Error. Invalid Input")
+                            continue
+                case "f"|"F":
+                    while True:
+                        try:
+                            print("\nEnter the airports ICAO code")
+                            airport_icao = input("> ").upper()
+                            if len(airport_icao) > 4 or len(airport_icao) < 3:
+                                print("Error. Invalid ICAO format")
+                                continue
+                            airport_name = airports[airport_icao]
+                            print(f"Full airport name: {airport_name}\n")
+                            break
+                        except KeyboardInterrupt: exit()
+                        except:
+                            print("Error. Unknown ICAO")
+                            print("Airports in memory:")
+                            print(airports.keys())
+                            continue
+                case "q"|"Q":
+                    break
+                case _:
+                    continue
+        except KeyboardInterrupt: exit()
+        except:
+            continue
 
     break_line()
 
