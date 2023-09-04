@@ -38,8 +38,6 @@ def part2():
     print("\n\n")
 
 
-
-
 def part3():
     number = 0
     try:
@@ -49,9 +47,12 @@ def part3():
         return
 
     def is_prime(n: int) -> bool:
-        if n <= 1: return False
-        if n <= 3: return True
-        if n % 2 == 0 or n % 3 == 0: return False
+        if n <= 1:
+            return False
+        if n <= 3:
+            return True
+        if n % 2 == 0 or n % 3 == 0:
+            return False
         for i in range(5, int(n**0.5) + 1, 6):
             if n % i == 0 or n % (i + 2) == 0:
                 return False
@@ -77,7 +78,6 @@ def part3():
         print("Number is not a prime")
 
 
-
 def part4():
     cities = []
     print("Give me 5 cities.")
@@ -86,7 +86,6 @@ def part4():
     print("\nHere they are:")
     for i in range(5):
         print(f"{cities[i]}")
-
 
 
 if __name__ == "__main__":

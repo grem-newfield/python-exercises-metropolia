@@ -9,9 +9,10 @@ def break_line():
     )
     print()
 
+
 def part1():
     print("Running Part 1\n")
-    seasons = ("winter","spring", "summer", "autumn")
+    seasons = ("winter", "spring", "summer", "autumn")
     month = None
     while True:
         try:
@@ -26,7 +27,7 @@ def part1():
             print("NaN. Number of month required.")
             continue
 
-    print("It is in",seasons[month // 3])
+    print("It is in", seasons[month // 3])
 
     break_line()
 
@@ -39,18 +40,21 @@ def part2():
     while True:
         try:
             name = input("Give me names! : ")
-            if name == " ": break
+            if name == " ":
+                break
             if name in names:
                 print("Existing name.")
                 continue
             names.add(name)
             print("New name.")
-        except KeyboardInterrupt: exit()
+        except KeyboardInterrupt:
+            exit()
         except:
             print("? ? ?")
             continue
 
-    for name in names:print(name)
+    for name in names:
+        print(name)
 
     break_line()
 
@@ -63,19 +67,20 @@ def part2():
 # ICAO code of the airport and prints out the corresponding name. If the user
 # chooses to quit, the program execution ends. The user can choose a new option
 # as many times they want until they choose to quit. (The ICAO code is an
-                                                      # identifier that is
-                                                      # unique to each airport.
-                                                      # For example, the ICAO
-                                                      # code of Helsinki-Vantaa
-                                                      # Airport is EFHK. You
-                                                      # can easily find the
-                                                      # ICAO codes of different
-                                                      # airports online.)
+# identifier that is
+# unique to each airport.
+# For example, the ICAO
+# code of Helsinki-Vantaa
+# Airport is EFHK. You
+# can easily find the
+# ICAO codes of different
+# airports online.)
+
 
 def part3():
     print("Running Part 3\n")
 
-    # new airport 
+    # new airport
     # fetch info of airport
     # quit
 
@@ -85,9 +90,9 @@ def part3():
         try:
             user_input = input("(A)dd new airport, (F)etch info, (Q)uit: ")
             match user_input:
-                case "a"|"A":
+                case "a" | "A":
                     while True:
-                        try: 
+                        try:
                             print("\nAdding new airport")
                             airport_icao = input("ICAO code: ").upper()
                             if len(airport_icao) > 4 or len(airport_icao) < 3:
@@ -97,11 +102,12 @@ def part3():
                             airports[airport_icao] = airport_name
                             print(f"\nAdded {airport_name}:{airport_icao}\n")
                             break
-                        except KeyboardInterrupt: exit()
+                        except KeyboardInterrupt:
+                            exit()
                         except:
                             print("Error. Invalid Input")
                             continue
-                case "f"|"F":
+                case "f" | "F":
                     while True:
                         try:
                             print("\nEnter the airports ICAO code")
@@ -112,17 +118,19 @@ def part3():
                             airport_name = airports[airport_icao]
                             print(f"Full airport name: {airport_name}\n")
                             break
-                        except KeyboardInterrupt: exit()
+                        except KeyboardInterrupt:
+                            exit()
                         except:
                             print("Error. Unknown ICAO")
                             print("Airports in memory:")
                             print(airports.keys())
                             continue
-                case "q"|"Q":
+                case "q" | "Q":
                     break
                 case _:
                     continue
-        except KeyboardInterrupt: exit()
+        except KeyboardInterrupt:
+            exit()
         except:
             continue
 

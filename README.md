@@ -8,9 +8,9 @@
 - [x] 2. Variables and interactive programs
 - [x] 3. Conditional structures (if)
 - [x] 4. While loops (while)
-- [ ] 5. List structures and iterative loops (for)
-- [ ] 6. Functions
-- [ ] 7. Tuple, set, and dictionary
+- [x] 5. List structures and iterative loops (for)
+- [x] 6. Functions
+- [x] 7. Tuple, set, and dictionary
 - [ ] 8. Using relational databases
 - [ ] 9. Fundamentals of object-oriented programming
 - [ ] 10. Association
