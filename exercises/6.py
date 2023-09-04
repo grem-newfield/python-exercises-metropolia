@@ -6,7 +6,7 @@ def break_line():
     print()
 
 def part1():
-    print("Runnig Part 1\n")
+    print("Running Part 1\n")
 
     def dice_roll() -> int:
         return randrange(1,7)
@@ -23,7 +23,7 @@ def part1():
     break_line()
 
 def part2():
-    print("Runnig Part 2\n")
+    print("Running Part 2\n")
     def roll_n_sided_die(sides: int):
         if sides <= 1:
             print("Invalid amount of sides.")
@@ -34,6 +34,7 @@ def part2():
     print("Rolling ?D Dice")
     while True: 
         try: sides = int(input("Give side number: ").strip()); break 
+        except KeyboardInterrupt: exit()
         except: print("NaN"); continue
     
     while True:
@@ -46,7 +47,7 @@ def part2():
     break_line()
 
 def part3():
-    print("Runnig Part 3\n")
+    print("Running Part 3\n")
     def gallons_to_litres(gallons: float) -> float:
         conversion_rate = 4.54609288
         return gallons * conversion_rate
@@ -55,6 +56,7 @@ def part3():
 
     while True: 
         try: gallons = float(input("Input gallons: ").strip())
+        except KeyboardInterrupt: exit()
         except: print("NaN. Negative number to exit"); continue
         if gallons < 0: 
             break
@@ -64,7 +66,7 @@ def part3():
 
 
 def part4(): 
-    print("Runnig Part 4\n")
+    print("Running Part 4\n")
     list_of_integers = [1,2,3,4]
     expected_sum = 10
 
@@ -80,7 +82,7 @@ def part4():
     break_line()
 
 def part5(): 
-    print("Runnig Part 5\n")
+    print("Running Part 5\n")
 
     number_list = [1,2,3,4,5,6,7,8]
     expected_list = [2,4,6,8]
@@ -105,7 +107,7 @@ def part5():
 
 def part6():
     from math import pi
-    print("Runnig Part 6\n")
+    print("Running Part 6\n")
     # diameter of pizza : cm
     # price : €
     # calculate : €/m
@@ -122,15 +124,19 @@ def part6():
 
     while True: 
         try: pizza_1_diameter = float(input("Pizza 1 diameter: (meters) ").strip()); break 
+        except KeyboardInterrupt: exit()
         except: print("NaN"); continue
     while True: 
         try: pizza_1_price = float(input("Pizza 1 price: ").strip()); break 
+        except KeyboardInterrupt: exit()
         except: print("NaN"); continue
     while True: 
         try: pizza_2_diameter = float(input("Pizza 2 diameter: (meters) ").strip()); break 
+        except KeyboardInterrupt: exit()
         except: print("NaN"); continue
     while True: 
         try: pizza_2_price = float(input("Pizza 2 price: ").strip()); break 
+        except KeyboardInterrupt: exit()
         except: print("NaN"); continue
     
     assert pizza_1_diameter != 0, "\nPizza 1 diameter is 0. You got no pizza."
