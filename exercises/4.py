@@ -19,7 +19,8 @@ def part2():
                 break
             print(f"Converted to cm: {inches_to_cm(number)}")
         except:
-            print("NaN.")
+            print("NaN. Negative number to exit.")
+            continue
 
 
 def part3():
@@ -94,15 +95,15 @@ def part6():
     # circle_A = pi * radius**2
     # square_B = 1 * 1
 
-    # π≈4n/N.
-    # N = total number
-    # n = numbers in circle A
-
-    try:
-        total_points = int(input("How many points? (integer) ").strip())
-    except:
-        print("Couldnt parse points amount")
-        return
+    while True:
+        try:
+            total_points = int(input("How many points? (integer) ").strip())
+            break
+        except KeyboardInterrupt:
+            exit()
+        except:
+            print("Couldnt parse points amount")
+            continue
 
     def generate_points(amount):
         points = set()
@@ -120,6 +121,10 @@ def part6():
     for point in points:
         if is_point_in_circle(point):
             points_inside_circle += 1
+
+    # π≈4n/N.
+    # N = total number
+    # n = numbers in circle A
 
     approximate_pi = 4 * (points_inside_circle / total_points)
     print(f"Approximate PI based on {total_points} random points: {approximate_pi}")
