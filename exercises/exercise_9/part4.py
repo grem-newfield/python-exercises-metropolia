@@ -1,4 +1,4 @@
-from car import Car
+from classes import Car
 from random import randrange
 
 
@@ -19,8 +19,4 @@ def part4():
 
 
 if __name__ == "__main__":
-    part4()
-
-
-def __call__():
     part4()

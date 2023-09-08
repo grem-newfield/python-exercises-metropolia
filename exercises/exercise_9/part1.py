@@ -1,4 +1,6 @@
-from car import Car
+from classes import Car
+
+# from classes import Car
 
 
 def part1():
@@ -7,8 +9,4 @@ def part1():
 
 
 if __name__ == "__main__":
-    part1()
-
-
-def __call__():
     part1()
