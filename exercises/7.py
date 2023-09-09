@@ -12,12 +12,25 @@ def break_line():
 
 def part1():
     print("Running Part 1\n")
-    seasons = ("winter", "spring", "summer", "autumn")
+    seasons = (
+        "winter",
+        "winter",
+        "spring",
+        "spring",
+        "spring",
+        "summer",
+        "summer",
+        "summer",
+        "autumn",
+        "autumn",
+        "autumn",
+        "winter",
+    )
     month = None
     while True:
         try:
             month = int(input("Choose a month: (int) ").strip())
-            if month not in range(1, 12 + 1):
+            if month < 1 or month > 12:  # not in range(1, 13):
                 print("That is not a month number.")
                 continue
             break
@@ -26,8 +39,8 @@ def part1():
         except:
             print("NaN. Number of month required.")
             continue
-
-    print("It is in", seasons[month // 3])
+    print(month, " month")
+    print("It is in", seasons[(month - 1)])
 
     break_line()
 

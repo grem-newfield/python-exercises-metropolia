@@ -15,7 +15,6 @@ def break_line():
 
 
 choice = "all"
-print(argv)
 try:
     if argv[1]:
         choice = str(argv[1])

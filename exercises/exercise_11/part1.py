@@ -1,9 +1,17 @@
-# myList = [item for item in input("gimme: ").split(" ")]
+from classes import Book, Magazine
 
-# 1. Write a program that fetches and prints out a random Chuck Norris joke for
-# the user. Use the API presented here: https://api.chucknorris.io/. The user
-# should only be shown the joke text.
+# the print_information part is implemented as a __repr__ method
 
 
 def part1():
-    pass
+    print("Magazine example:\n")
+    mag = Magazine("Donald Duck", "Aki Hyyppä")
+    print(mag)
+
+    print("\nBook example:\n")
+    book = Book("Compartment No. 6", "Rosa Liksom", 192)
+    print(book)
+
+
+if __name__ == "__main__":
+    part1()

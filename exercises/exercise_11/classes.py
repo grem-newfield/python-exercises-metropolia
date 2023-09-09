@@ -1,67 +1,34 @@
 from random import randrange
 
 
-class Elevator:
-    def __init__(self, floor):
-        self.floor = floor
-
-    def go_to_floor(self, floor):
-        # target = floor - self.floor
-        if self.floor == floor:
-            return
-        if self.floor > floor:
-            for _ in range(floor):
-                self.floor_down()
-        else:
-            for _ in range(floor):
-                self.floor_up()
-
-        self.floor = floor
-
-    def floor_up(self):
-        self.floor += 1
-
-    def floor_down(self):
-        self.floor += -1
+class Publication:
+    def __init__(self, name) -> None:
+        self.name = name
 
     def __repr__(self) -> str:
-        return f""" 
-Current floor: {self.floor}
-"""
+        return f"Name: {self.name}"
 
 
-class Building:
-    def __init__(self, top_floor, bottom_floor, how_many_elevators):
-        self.top_floor = top_floor
-        self.bottom_floor = bottom_floor
-        elevators = []
-        for _ in range(how_many_elevators):
-            elevators.append(Elevator(bottom_floor))
-        self.elevators = elevators
-
-    def run_elevator(self, elevator_number, destination_floor):
-        assert (
-            destination_floor <= self.top_floor
-        ), "destination floor bigger than possible"
-        assert (
-            destination_floor >= self.bottom_floor
-        ), "destination floor bigger than possible"
-        self.elevators[elevator_number].go_to_floor(destination_floor)
+class Book(Publication):
+    def __init__(self, name, author, page_count) -> None:
+        super().__init__(name)
+        self.author = author
+        self.page_count = page_count
 
     def __repr__(self) -> str:
-        elevator_floors = []
-        for e in self.elevators:
-            elevator_floors.append(e.floor)
-        return f"""
-Building has {len(self.elevators)} elevators.
-Positions of elevators: {elevator_floors}
-    """
+        return (
+            super().__repr__()
+            + f"\nAuthor: {self.author}\nPage count: {self.page_count}"
+        )
 
-    def fire_alarm(self):
-        print("Bruh, we burnin!")
-        print("Sending all elevators to bottom floor!")
-        for e in self.elevators:
-            e.floor = self.bottom_floor
+
+class Magazine(Publication):
+    def __init__(self, name, chief_editor) -> None:
+        super().__init__(name)
+        self.chief_editor = chief_editor
+
+    def __repr__(self) -> str:
+        return super().__repr__() + f"\nChief editor: {self.chief_editor}"
 
 
 class Car:
@@ -95,8 +62,25 @@ class Car:
 Registration Number: {self.registration_number}
 Maximum speed: {self.maximum_speed} km/h
 Current speed: {self.current_speed} km/h
-Travelled Distance: {self.travelled_distance} km
-"""
+Travelled Distance: {self.travelled_distance} km"""
+
+
+class ElectricCar(Car):
+    def __init__(self, registration_number, maximum_speed, kilowatt_hours):
+        super().__init__(registration_number, maximum_speed)
+        self.kilowatt_hours = float(kilowatt_hours)
+
+    def __repr__(self) -> str:
+        return super().__repr__() + f"\nCharge: {self.kilowatt_hours} kWh"
+
+
+class GasolineCar(Car):
+    def __init__(self, registration_number, maximum_speed, liters):
+        super().__init__(registration_number, maximum_speed)
+        self.liters = float(liters)
+
+    def __repr__(self) -> str:
+        return super().__repr__() + f"\nGasoline: {self.liters} l"
 
 
 class Race:

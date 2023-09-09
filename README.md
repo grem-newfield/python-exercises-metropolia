@@ -12,8 +12,8 @@
 - [x] 6. Functions
 - [x] 7. Tuple, set, and dictionary
 - [ ] 8. Using relational databases
-- [ ] 9. Fundamentals of object-oriented programming
-- [ ] 10. Association
-- [ ] 11. Inheritance
+- [x] 9. Fundamentals of object-oriented programming
+- [x] 10. Association
+- [x] 11. Inheritance
 - [ ] 12. Using external interfaces
 - [ ] 13. Setting up a backend service with an interface
