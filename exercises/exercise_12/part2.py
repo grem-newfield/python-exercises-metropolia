@@ -1,10 +1,3 @@
-# 2. Familiarize yourself with the OpenWeather weather API at:
-# https://openweathermap.org/api. Your task is to write a program that asks the
-# user for the name of a municipality and then prints out the corresponding
-# weather condition description text and temperature in Celsius degrees. Take a
-# good look at the API documentation. You must register for the service to
-# receive the API key required for making API requests. Furthermore, find out
-# how you can convert Kelvin degrees into Celsius.
 import requests
 import json
 
@@ -40,7 +33,7 @@ def part2():
         print(
             f"Condition: {raw['weather'][0]['main']}, {raw['weather'][0]['description']}"
         )
-        print(f"Temperature: {round(raw['main']['temp'] - 273.15)}")
+        print(f"Temperature: {(raw['main']['temp'] - 273.15):.2f} C")
     else:
         print("Server response: ", raw["message"])
 

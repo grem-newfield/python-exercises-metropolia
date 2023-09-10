@@ -21,7 +21,7 @@ except:
         """Hint: you can pass your choice as an argument
 to the script like: python 6.py 4\n"""
     )
-    choice = str(input("Hello, what part of the 11th exercise?\n(1,2,all): "))
+    choice = str(input("Hello, what part of the 12th exercise?\n(1,2,all): "))
 match choice:
     case "1":
         part1()
