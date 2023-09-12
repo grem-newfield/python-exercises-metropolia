@@ -1,6 +1,7 @@
 # ## 7. Tuple, set, and dictionary
 from math import prod
 from sys import argv
+from helpers import asker, break_line
 
 
 def break_line():
@@ -36,7 +37,7 @@ def part1():
             break
         except KeyboardInterrupt:
             exit()
-        except:
+        except Exception:
             print("NaN. Number of month required.")
             continue
     print(month, " month")
@@ -62,7 +63,7 @@ def part2():
             print("New name.")
         except KeyboardInterrupt:
             exit()
-        except:
+        except Exception:
             print("? ? ?")
             continue
 
@@ -95,7 +96,7 @@ def part3():
                             break
                         except KeyboardInterrupt:
                             exit()
-                        except:
+                        except Exception:
                             print("Error. Invalid Input")
                             continue
                 case "f" | "F":
@@ -111,7 +112,7 @@ def part3():
                             break
                         except KeyboardInterrupt:
                             exit()
-                        except:
+                        except Exception:
                             print("Error. Unknown ICAO")
                             print("Airports in memory:")
                             print(airports.keys())
@@ -122,7 +123,7 @@ def part3():
                     continue
         except KeyboardInterrupt:
             exit()
-        except:
+        except Exception:
             continue
 
     break_line()
@@ -133,7 +134,7 @@ if __name__ == "__main__":
     try:
         if argv[1]:
             choice = str(argv[1])
-    except:
+    except Exception:
         print(
             """Hint: you can pass your choice as an argument 
       to the script like: python 6.py 4\n"""

@@ -1,16 +1,12 @@
 from sys import argv
+from typing import Any
 from part1 import part1
 from part2 import part2
 from part3 import part3
 
-if __name__ == "__main__":
-    pass
-
 
 def break_line():
-    print(
-        "--------------------------------------------------------------------------------"
-    )
+    print("-" * 80)
     print()
 
 

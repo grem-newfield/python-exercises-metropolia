@@ -1,12 +1,6 @@
 from random import randrange
 from sys import argv
-
-
-def break_line():
-    print(
-        "--------------------------------------------------------------------------------"
-    )
-    print()
+from helpers import asker, break_line
 
 
 def part1():
@@ -38,15 +32,8 @@ def part2():
         return (randrange(1, sides + 1), sides)
 
     print("Rolling ?D Dice")
-    while True:
-        try:
-            sides = int(input("Give side number: ").strip())
-            break
-        except KeyboardInterrupt:
-            exit()
-        except:
-            print("NaN")
-            continue
+
+    sides = asker("Give side number: ", "int")
 
     while True:
         (roll, sides) = roll_n_sided_die(sides)
@@ -72,7 +59,7 @@ def part3():
             gallons = float(input("Input gallons: ").strip())
         except KeyboardInterrupt:
             exit()
-        except:
+        except Exception:
             print("NaN. Negative number to exit")
             continue
         if gallons < 0:
@@ -131,51 +118,15 @@ def part6():
     # diameter of pizza : cm
     # price : €
     # calculate : €/m
-    pizza_1_price = 0.0
-    pizza_1_diameter = 0.0
-    pizza_2_price = 0.0
-    pizza_2_diameter = 0.0
 
     def calculate_price(pizza_diameter, pizza_price):
-        area = pi * (pizza_diameter / 2) ** 2
+        area = pi * ((pizza_diameter / 2) ** 2)
         return pizza_price / area  # €/m
 
-    while True:
-        try:
-            pizza_1_diameter = float(input("Pizza 1 diameter: (meters) ").strip())
-            break
-        except KeyboardInterrupt:
-            exit()
-        except:
-            print("NaN")
-            continue
-    while True:
-        try:
-            pizza_1_price = float(input("Pizza 1 price: ").strip())
-            break
-        except KeyboardInterrupt:
-            exit()
-        except:
-            print("NaN")
-            continue
-    while True:
-        try:
-            pizza_2_diameter = float(input("Pizza 2 diameter: (meters) ").strip())
-            break
-        except KeyboardInterrupt:
-            exit()
-        except:
-            print("NaN")
-            continue
-    while True:
-        try:
-            pizza_2_price = float(input("Pizza 2 price: ").strip())
-            break
-        except KeyboardInterrupt:
-            exit()
-        except:
-            print("NaN")
-            continue
+    pizza_1_price = asker("Pizza 1 diameter: (cm) ", "float")
+    pizza_1_diameter = asker("Pizza 1 price: ", "float")
+    pizza_2_price = asker("Pizza 2 diameter: (cm) ", "float")
+    pizza_2_diameter = asker("Pizza 2 price: ", "float")
 
     assert pizza_1_diameter != 0, "\nPizza 1 diameter is 0. You got no pizza."
     assert pizza_2_diameter != 0, "\nPizza 2 diameter is 0. You got no pizza."
@@ -203,7 +154,7 @@ if __name__ == "__main__":
     try:
         if argv[1]:
             choice = str(argv[1])
-    except:
+    except Exception:
         print(
             """Hint: you can pass your choice as an argument 
       to the script like: python 6.py 4\n"""

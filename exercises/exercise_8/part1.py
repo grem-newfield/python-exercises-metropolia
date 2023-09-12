@@ -10,19 +10,26 @@ import csv
 import mariadb
 
 
-def test_database_operations():
-    conn = mariadb.connect(
-        host="127.0.0.1",
-        port=3306,
-        database="",
-        user="grem",
-        # password=None,
-        autocommit=True,
-    )
-    cursor = conn.cursor()
-    # Fetch data
-    cursor.execute("select * from airports limit 1")
-    rows = cursor.fetchall()
-    print(rows)
-    # Clean up
-    conn.close()
+def part1():
+    def test_database_operations():
+        conn = mariadb.connect(
+            host="127.0.0.1",
+            port=3306,
+            database="test",
+            user="db_user",
+            password="thereisaspoon",
+            autocommit=True,
+        )
+        cursor = conn.cursor()
+        # Fetch data
+        cursor.execute("select * from airports limit 1")
+        rows = cursor.fetchall()
+        print(rows)
+        # Clean up
+        conn.close()
+
+    pass
+
+
+if __name__ == "__main__":
+    part1()

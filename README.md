@@ -15,5 +15,5 @@
 - [x] 9. Fundamentals of object-oriented programming
 - [x] 10. Association
 - [x] 11. Inheritance
-- [ ] 12. Using external interfaces
+- [x] 12. Using external interfaces
 - [ ] 13. Setting up a backend service with an interface

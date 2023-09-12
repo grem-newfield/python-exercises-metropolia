@@ -5,3 +5,11 @@
 # https://geopy.readthedocs.io/en/stable/. Install the library by selecting
 # **View / Tool Windows / Python Packages** in your PyCharm IDE, write `geopy`
 # into the search field and finish the installation.
+
+
+def part3():
+    pass
+
+
+if __name__ == "__main__":
+    part3()

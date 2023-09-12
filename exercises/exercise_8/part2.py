@@ -2,3 +2,11 @@
 # `FI`) and
 # prints out the airports located in that country ordered by airport type. For
 # example, Finland has 65 small airports, 15 helicopter airports and so on.
+
+
+def part2():
+    pass
+
+
+if __name__ == "__main__":
+    part2()

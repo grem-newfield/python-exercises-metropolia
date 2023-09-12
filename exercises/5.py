@@ -1,3 +1,6 @@
+from helpers import break_line
+
+
 def part1():
     from random import randrange
 
@@ -13,7 +16,8 @@ def part1():
         dice.append(roll)
         print(f"Rolled dice {i+1}: {roll}")
 
-    print(f"\nDice sum: {sum(dice)}\n\n")
+    print(f"\nDice sum: {sum(dice)}")
+    break_line()
 
 
 def part2():
@@ -35,7 +39,8 @@ def part2():
             print(" ", numbers.pop(), end="")
         except:
             break
-    print("\n\n")
+    print()
+    break_line()
 
 
 def part3():
@@ -77,6 +82,8 @@ def part3():
     else:
         print("Number is not a prime")
 
+    break_line()
+
 
 def part4():
     cities = []
@@ -86,6 +93,8 @@ def part4():
     print("\nHere they are:")
     for i in range(5):
         print(f"{cities[i]}")
+
+    break_line()
 
 
 if __name__ == "__main__":
