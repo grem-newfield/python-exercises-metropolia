@@ -18,7 +18,7 @@ def part2():
                 print("Negative number.")
                 break
             print(f"Converted to cm: {inches_to_cm(number)}")
-        except:
+        except Exception:
             print("NaN. Negative number to exit.")
             continue
 
@@ -30,7 +30,7 @@ def part3():
         try:
             numbers.append(float(input("Type: ").strip()))
             print(f"Numbers given: {numbers}")
-        except:
+        except Exception:
             print("NaN.")
             break
     numbers.sort()
@@ -63,7 +63,7 @@ def part4():
                         break
                     case _:
                         print("Didn't understand input.\nAssuming you dont.")
-        except:
+        except Exception:
             print("NaN.")
             continue
 
@@ -101,7 +101,7 @@ def part6():
             break
         except KeyboardInterrupt:
             exit()
-        except:
+        except Exception:
             print("Couldnt parse points amount")
             continue
 

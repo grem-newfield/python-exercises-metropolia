@@ -14,7 +14,7 @@ choice = "all"
 try:
     if argv[1]:
         choice = str(argv[1])
-except:
+except Exception:
     print(
         """Hint: you can pass your choice as an argument
 to the script like: python 6.py 4\n"""

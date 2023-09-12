@@ -1,6 +1,4 @@
 # 8. Using relational databases
-import sqlite3
-import csv
 
 # 1. Write a program that asks the user to enter the ICAO code of an airport.
 # The program fetches and prints out the corresponding airport name and

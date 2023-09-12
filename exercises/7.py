@@ -1,14 +1,6 @@
 # ## 7. Tuple, set, and dictionary
-from math import prod
 from sys import argv
-from helpers import asker, break_line
-
-
-def break_line():
-    print(
-        "--------------------------------------------------------------------------------"
-    )
-    print()
+from helpers import break_line
 
 
 def part1():
@@ -136,7 +128,7 @@ if __name__ == "__main__":
             choice = str(argv[1])
     except Exception:
         print(
-            """Hint: you can pass your choice as an argument 
+            """Hint: you can pass your choice as an argument
       to the script like: python 6.py 4\n"""
         )
         choice = str(input("Hello, what part of the 6th exercise?\n(1,2,3,all): "))

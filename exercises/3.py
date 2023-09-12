@@ -31,7 +31,7 @@ def part3():
     gender = str(input("What is your biological gender? (m/f): "))
     try:
         hemoglobin_value = float(input("What is your hemoglobin level? (in g/l): "))
-    except:
+    except Exception:
         print("Wrong value for hemoglobin")
         return
 
@@ -67,7 +67,7 @@ def part3():
 def part4():
     try:
         year = int(input("\n\nEnter a year: "))
-    except:
+    except Exception:
         print("Not a nubmber.")
         return
     if year % 4 == 0 or year % 400 == 0:

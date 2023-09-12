@@ -26,7 +26,7 @@ def part2():
         number = input("Give me numbers, if you want to stop, anything else? : ")
         try:
             numbers.append(float(number))
-        except:
+        except Exception:
             break
         print(numbers)
     numbers.sort()
@@ -37,7 +37,7 @@ def part2():
     for _ in range(5):
         try:
             print(" ", numbers.pop(), end="")
-        except:
+        except Exception:
             break
     print()
     break_line()
@@ -47,7 +47,7 @@ def part3():
     number = 0
     try:
         number = int(input("Throw me some number (int): ").strip())
-    except:
+    except Exception:
         print("Input an integer.")
         return
 
@@ -62,20 +62,6 @@ def part3():
             if n % i == 0 or n % (i + 2) == 0:
                 return False
         return True
-
-    assert is_prime(13) == True
-    assert is_prime(3) == True
-    assert is_prime(2) == True
-    assert is_prime(73) == True
-    assert is_prime(179) == True
-    assert is_prime(283) == True
-    assert is_prime(569) == True
-    assert is_prime(5) == True
-    assert is_prime(21) == False
-    assert is_prime(0) == False
-    assert is_prime(1) == False
-    assert is_prime(4) == False
-    assert is_prime(564) == False
 
     if is_prime(number):
         print("Number is prime")

@@ -1,5 +1,4 @@
 from sys import argv
-from typing import Any
 from part1 import part1
 from part2 import part2
 from part3 import part3
@@ -14,7 +13,7 @@ choice = "all"
 try:
     if argv[1]:
         choice = str(argv[1])
-except:
+except Exception:
     print(
         """Hint: you can pass your choice as an argument
 to the script like: python 6.py 4\n"""

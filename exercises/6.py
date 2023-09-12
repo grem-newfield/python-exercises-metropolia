@@ -136,10 +136,16 @@ def part6():
 
     print()
     print(
-        f"Pizza 1\n    Size: {pizza_1_diameter}\n    Price: {pizza_1_price}\n{price_1:.3} €/m\n"
+        f"""Pizza 1
+    Size: {pizza_1_diameter}
+    Price: {pizza_1_price}
+    {price_1:.3} €/m\n"""
     )
     print(
-        f"Pizza 2\n    Size: {pizza_2_diameter}\n    Price: {pizza_2_price}\n{price_2:.3} €/m\n"
+        f"""Pizza 2
+    Size: {pizza_2_diameter}
+    Price: {pizza_2_price}
+    {price_2:.3} €/m\n"""
     )
     if price_1 == 0.0 or price_2 == 0.0:
         print(f"Pizza {'1' if price_1 < price_2 else '2' } is FREE")
@@ -156,7 +162,7 @@ if __name__ == "__main__":
             choice = str(argv[1])
     except Exception:
         print(
-            """Hint: you can pass your choice as an argument 
+            """Hint: you can pass your choice as an argument
       to the script like: python 6.py 4\n"""
         )
         choice = str(

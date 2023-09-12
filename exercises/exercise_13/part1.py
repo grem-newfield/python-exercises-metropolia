@@ -25,16 +25,16 @@ def part1():
                         break
                     except KeyboardInterrupt:
                         break
-                    except:
+                    except Exception:
                         print("Invalid input")
                         continue
                 resp = requests.get(f"http://127.0.0.1:5000/prime_number/{num}").json()
                 print(resp)
-            except:
+            except Exception:
                 print("Something went wrong :(")
             try:
                 backend.terminate()
-            except:
+            except Exception:
                 return
         case "Windows":
             print(
@@ -55,7 +55,7 @@ build the backend_service_rs app from source yourself:
                             break
                         except KeyboardInterrupt:
                             break
-                        except:
+                        except Exception:
                             print("Invalid input")
                             continue
                     resp = requests.get(
