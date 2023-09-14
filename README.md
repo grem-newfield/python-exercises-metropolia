@@ -11,7 +11,7 @@
 - [x] 5. List structures and iterative loops (for)
 - [x] 6. Functions
 - [x] 7. Tuple, set, and dictionary
-- [ ] 8. Using relational databases
+- [x] 8. Using relational databases
 - [x] 9. Fundamentals of object-oriented programming
 - [x] 10. Association
 - [x] 11. Inheritance
