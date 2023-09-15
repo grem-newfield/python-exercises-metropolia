@@ -9,11 +9,16 @@ def part2():
     from subprocess import Popen
     import platform
     import requests
+    import os
 
     match platform.system():
         case "Linux":
             try:
-                backend = Popen(["./backend_service"], shell=True)
+                backend = Popen(
+                    ["./backend_service"],
+                    shell=True,
+                    cwd=os.path.dirname(os.path.realpath(__file__)),
+                )
                 icao = "EFHK"
                 while True:
                     try:
@@ -21,17 +26,17 @@ def part2():
                         break
                     except KeyboardInterrupt:
                         break
-                    except:
+                    except Exception:
                         print("Invalid input")
                         continue
                 # TODO:Implement airport database query in backend_service
-                resp = requests.get("http://127.0.0.1:5000/airport/{icao}").json()
+                resp = requests.get(f"http://127.0.0.1:5000/airport/{icao}").json()
                 print(resp)
-            except:
+            except Exception:
                 print("Something went wrong :(")
             try:
                 backend.terminate()
-            except:
+            except Exception:
                 return
         case "Windows":
             print(
@@ -52,7 +57,7 @@ build the backend_service_rs app from source yourself:
                             break
                         except KeyboardInterrupt:
                             break
-                        except:
+                        except Exception:
                             print("Invalid input")
                             continue
                     resp = requests.get("http://127.0.0.1:5000/airport/{icao}").json()
