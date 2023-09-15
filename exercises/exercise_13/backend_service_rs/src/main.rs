@@ -1,9 +1,10 @@
-use actix_web::{
-    get, http::StatusCode, post, web, web::Json, App, HttpResponse, HttpServer, Responder, Result,
-};
+use actix_web::body::EitherBody;
+use actix_web::HttpRequest;
+use actix_web::{get, web, App, HttpResponse, HttpServer, Responder, Result};
+use is_prime::is_prime;
+use mysql::prelude::Queryable;
+use mysql::Pool;
 use serde::{Deserialize, Serialize};
-use serde_json::from_str;
-use serde_json::Value;
 
 #[get("/")]
 async fn hello() -> impl Responder {
@@ -16,18 +17,13 @@ async fn hello() -> impl Responder {
 //     must be in the format of `{"Number":31, "isPrime":true}`.
 
 #[get("prime_number/{number}")]
-// async fn prime_number(path: web::Path<u64>) -> HttpResponse {
-async fn prime_number(path: web::Path<u64>) -> Result<String> {
+async fn prime_number(path: web::Path<String>) -> Result<String> {
     let number = path.into_inner();
-    // HttpResponse::Ok().json(json!({"answer": number}))
-    // HttpResponse::Ok().body( format!("{\"Number\":{}, \"isPrime\":{:?}", number ,is_prime(number)) )
     Ok(format!(
         "{{\"Number\":{}, \"isPrime\":{:?}}}",
         number,
-        // is_prime(number)
-        is_prime_but_working(number)
+        is_prime(&number)
     ))
-    // Ok(format!("number is: {}", if is_prime(number) {"Prime"} else {"Not Prime"}))
 }
 
 // 2. Implement a backend service that gets the ICAO code of an airport and then returns the name
@@ -42,78 +38,62 @@ pub struct Airport {
     name: String,
     location: String,
 }
-use sqlx::PgPool;
 
-async fn test_db() -> Result<(), sqlx::Error> {
-    let pool = PgPool::connect("mariadb://db_user:thereisaspoon@localhost/test").await?;
-    dbg!(pool);
-    Ok(())
+impl Airport {
+    pub fn new(icao: String, name: String, location: String) -> Self {
+        Self {
+            icao,
+            name,
+            location,
+        }
+    }
 }
 
 #[get("airport/{icao}")]
-async fn get_airport(path: web::Path<String>) -> Result<String> {
-    let pool = PgPool::connect("mysql://db_user:thereisaspoon@localhost/test").await;
-    dbg!(pool);
+async fn get_airport(
+    req: HttpRequest,
+    path: web::Path<String>,
+) -> HttpResponse<EitherBody<String>> {
     let icao = path.into_inner();
-    Ok(format!("GOT: {}", icao))
-}
+    let mut conn = Pool::new("mysql://db_user:thereisaspoon@localhost/test")
+        .unwrap()
+        .get_conn()
+        .unwrap();
+    let sql = format!(
+        "SELECT ident, name, municipality FROM airport WHERE ident = \"{}\"",
+        icao.to_uppercase()
+    );
+    dbg!(&sql);
+    let result: (String, String, String) = match conn.query_first(sql).unwrap() {
+        Some(data) => data,
+        None => (
+            "Undefined".to_string(),
+            "Undefined".to_string(),
+            "Undefined".to_string(),
+        ),
+    };
 
-impl Airport {
-    //     pub fn new(icao: String, name: String, location: String) -> Self { Self { icao, name, location } }
-    pub async fn get_by_icao(icao: &str) -> Result<Airport> {
-        // let answer;
-        unimplemented!()
-    }
-}
+    let body = web::Json(Airport {
+        icao: result.0,
+        name: result.1,
+        location: result.2,
+    });
 
-// async fn get_airport(web::Path(icao): web::Path<String>) -> web::Json<Airport> {
-//     let airport = match Airport::get_by_icao(icao) {
-//         Some(airport) => airport,
-//         None => {
-//             return web::Json(Airport {
-//                 icao: "".to_string(),
-//                 name: "".to_string(),
-//                 location: "".to_string(),
-//             })
-//         }
-//     };
-
-//     web::Json(airport)
-// }
-
-fn is_prime(n: u64) -> bool {
-    if n <= 1 {
-        return false;
-    }
-    if n <= 3 {
-        return true;
-    }
-    if n % 2 == 0 || n % 3 == 0 {
-        return false;
-    }
-    for _i in (5..((n as f64).powf(0.5) + 1.0) as isize).step_by(6) {
-        return false;
-    }
-    return true;
-}
-
-fn is_prime_but_working(n: u64) -> bool {
-    // if n == 0 or n == 1 {return false}
-    for i in 2..n {
-        if n % i == 0 {
-            return false;
-        }
-    }
-    true
+    dbg!(&body);
+    let res = body.respond_to(&req);
+    res
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let data = test_db().await.unwrap();
-    dbg!(data);
-    HttpServer::new(|| App::new().service(hello).service(prime_number))
-        .bind("127.0.0.1:5001")
-        .unwrap()
-        .run()
-        .await
+    HttpServer::new(|| {
+        App::new()
+            .service(hello)
+            .service(prime_number)
+            .service(get_airport)
+    })
+    .bind("127.0.0.1:5000")
+    .unwrap()
+    .run()
+    .await
 }

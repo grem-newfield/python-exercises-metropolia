@@ -13,11 +13,16 @@ def part1():
     from subprocess import Popen
     import platform
     import requests
+    import os
 
     match platform.system():
         case "Linux":
             try:
-                backend = Popen(["./backend_service"], shell=True)
+                backend = Popen(
+                    ["./backend_service"],
+                    shell=True,
+                    cwd=os.path.dirname(os.path.realpath(__file__)),
+                )
                 num = 31
                 while True:
                     try:
