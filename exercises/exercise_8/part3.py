@@ -40,8 +40,7 @@ def part3():
         except Exception:
             print("Cant reach the database.")
             exit()
-        sql = "SELECT name, latitude_deg, longitude_deg "
-        sql += f'FROM airport WHERE ident = "{icao}"'
+        sql = f'SELECT name, latitude_deg, longitude_deg FROM airport WHERE ident = "{icao}"'
         print("Query:")
         print(sql, "\n")
         cursor = conn.cursor()
