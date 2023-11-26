@@ -29,7 +29,7 @@ def part2():
     raw = get_weather_request(municipality_name)
     raw = json.loads(raw)
     if raw["cod"] == 200:
-        print(f"Current weather in {municipality_name}, {raw['sys']['country']} :")
+        print(f"Current weather in {raw['name']}, {raw['sys']['country']} :")
         print(
             f"Condition: {raw['weather'][0]['main']}, {raw['weather'][0]['description']}"
         )
